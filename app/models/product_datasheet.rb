@@ -4,7 +4,7 @@ class ProductDatasheet < ActiveRecord::Base
   has_attached_file :xls, :path => ":rails_root/uploads/product_datasheets/:id/:basename.:extension"  
   
   validates_attachment_presence :xls
-  validates_attachment_content_type :xls, :content_type => ['application/vnd.ms-excel','text/plain']
+  validates_attachment_content_type :xls, :content_type => ['application/vnd.ms-excel','text/plain', 'application/octet-stream']
   
   scope :not_deleted, where("product_datasheets.deleted_at is NULL")
   scope :deleted, where("product_datasheets.deleted_at is NOT NULL")
